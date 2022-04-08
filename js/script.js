@@ -12,32 +12,36 @@ project 1 - A Random Quote Generator
 ***/
 const quotes = [
   {
-    author: 'Charles Dickens',
-    year: 1859,
-    quote: "A day wasted on others is not wasted on one's self."
+    quote: "A day wasted on others is not wasted on one's self.",
+    source: 'Charles Dickens',
+    citation: 'A Tale of Two Cities',
+    year: 1859
   },
   {
-    author: 'Charles Dickens',
-    year: 1865,
     quote: "No one is useless in this world who lightens the burdens of another.",
+    source: 'Charles Dickens',
+    citation: 'Our Mutual Friend',
+    year: 1865
   },
   {
-    author: 'J.R.R. Tolkien (Samwise Gamgee)',
-    year: 1954,
-    quote: "There's some good in this world, Mr.Frodo… and it's worth fighting for."
+    quote: "There's some good in this world, Mr.Frodo… and it's worth fighting for.",
+    source: 'J.R.R. Tolkien (Samwise Gamgee)',
+    citation: 'Lord of the Rings',
+    year: 1954
   }
 ]
-
-console.log(quotes);
-console.log(quotes[0].author);
-
 
 
 /***
  * `getRandomQuote` function
 ***/
 
+function getRandomQuote(array) {
+  randomIndexNum = Math.floor((Math.random() * array.length))
+  return quotes[randomIndexNum];
+}
 
+console.log(getRandomQuote(quotes));
 
 /***
  * `printQuote` function
