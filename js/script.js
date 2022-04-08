@@ -38,7 +38,8 @@ const quotes = [
 
 function getRandomQuote(array) {
   randomIndexNum = Math.floor((Math.random() * array.length))
-  return quotes[randomIndexNum];
+  randomQuoteObject = quotes[randomIndexNum];
+  return randomQuoteObject;
 }
 
 console.log(getRandomQuote(quotes));
@@ -46,6 +47,12 @@ console.log(getRandomQuote(quotes));
 /***
  * `printQuote` function
 ***/
+function printQuote() { 
+  randomQuote = randomQuoteObject.quote;
+  return randomQuote;
+}
+
+console.log(printQuote());
 
 
 
