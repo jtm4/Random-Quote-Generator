@@ -36,23 +36,43 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 
+// generates a random number, from 0 to the length of the array
+// creates and stores a variable randomQuoteObject for the randomly selected array object
 function getRandomQuote(array) {
   randomIndexNum = Math.floor((Math.random() * array.length))
   randomQuoteObject = quotes[randomIndexNum];
   return randomQuoteObject;
 }
 
-console.log(getRandomQuote(quotes));
 
 /***
  * `printQuote` function
 ***/
-function printQuote() { 
-  randomQuote = randomQuoteObject.quote;
-  return randomQuote;
-}
 
-console.log(printQuote());
+// pass getRandomQuote function within this function, and store returned value in variable randomQuote
+// test if the citation element exists, if it does, then add it to the html string, 
+// test if the year element exists and, if it does, add it to the html string
+// build HTML string
+function printQuote(array) {
+  randomQuote = getRandomQuote(array);
+  html = `
+  <p class="quote"> ${randomQuote.quote} </p>
+  <p class="source"> ${randomQuote.source} </p>
+  `;
+
+  if (randomQuote.citation) {
+    html += `
+      <span class="citation"> ${randomQuote.citation}</span>`;
+  }
+
+  if (randomQuote.year) {
+    html += `
+      <span class="year"> ${randomQuote.year}</span>`;
+  }
+
+  return html;
+}
+console.log(printQuote(quotes));
 
 
 
