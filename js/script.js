@@ -28,6 +28,18 @@ const quotes = [
     source: 'J.R.R. Tolkien (Samwise Gamgee)',
     citation: 'Lord of the Rings',
     year: 1954
+  },
+  {
+    quote: "Those who look for the bad in people will surely find it.",
+    source: "Abraham Lincoln",
+  },
+  {
+    quote: "To ease another's heartache is to forget one's own.",
+    source: "Abraham Lincoln",
+  },
+  {
+    quote: "Christianity, if false, is of no importance, and if true, of infinite importance. The only thing it cannot be is moderately important.",
+    source: "C.S. Lewis",
   }
 ]
 
@@ -47,9 +59,22 @@ function getRandomQuote(array) {
  * `printQuote` function
 ***/
 
-function printQuote(array) {
-  let randomQuote = getRandomQuote(array);
-  let html = `<p>${randomQuote.quote}</p>`;
+function printQuote() {
+  let randomQuote = getRandomQuote(quotes);
+  let html = `
+  <p class="quote">${randomQuote.quote}</p>
+  <p class="source">${randomQuote.source}`;
+
+  if (randomQuote.citation) {
+    html += `<span class="citation">${randomQuote.citation}</span>`;
+  }
+
+  if (randomQuote.year) {
+    html += `<span class="year">${randomQuote.year}</span>`;
+  }
+
+  html += `</p>`;
+
   return document.getElementById('quote-box').innerHTML = html;
 }
 
