@@ -7,6 +7,7 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+
 /*** 
  * Create an array of objects each containing a quote, a source, and some containing a citation and/or year. 
 ***/
@@ -27,15 +28,18 @@ const quotes = [
     quote: "There's some good in this world, Mr.Frodo… and it's worth fighting for.",
     source: 'J.R.R. Tolkien (Samwise Gamgee)',
     citation: 'Lord of the Rings',
-    year: 1954
+    year: 1954,
+    tags: 'Movies'
   },
   {
-    quote: "Those who look for the bad in people will surely find it.",
-    source: "Abraham Lincoln",
+    quote: "It is better to offer no excuse than a bad one.",
+    source: "George Washington",
+    tags: 'U.S. Presidents'
   },
   {
     quote: "To ease another's heartache is to forget one's own.",
     source: "Abraham Lincoln",
+    tags: 'U.S. Presidents'
   },
   {
     quote: "Whether you think you can or you think you can't, you're right.",
@@ -47,14 +51,14 @@ const quotes = [
 /***
  * `getRandomQuote` function returns a random element in an array provided as a parameter. 
  *    
- * Generates a random number from 0 to the array's length and stores it in the variable `randomIndexNum`.
- * Uses the `randomIndexNum` variable to select a random array element; stores the element in variable `randomQuoteObject`.
+ * Generates a random number from 0 to the array's length and stores it in the variable `randomIndexNumber`.
+ * Uses the `randomIndexNumber` variable to select a random array element; stores the element in variable `randomArrayElement`.
 ***/
 
 function getRandomQuote(array) {
-  let randomIndexNum = Math.floor((Math.random() * array.length));
-  let randomQuoteObject = array[randomIndexNum];
-  return randomQuoteObject;
+  let randomIndexNumber = Math.floor((Math.random() * array.length));
+  let randomArrayElement = array[randomIndexNumber];
+  return randomArrayElement;
 }
 
 
@@ -63,27 +67,29 @@ function getRandomQuote(array) {
  * 
  * Pass `getRandomQuote` function and store the random quote element in a variable
  * Build a string containing each parameter found in the quote object, and concatenate into a single string.
- *    Use if statements to test whether the selected quote object contains certain parameters; skip those parameters if they don't exist
- * Set the html element `quote-box` equal to the value of variable `html` and return the function
+ *    Use if statements to test whether the selected quote object contains certain parameters; add them to sring `stringToPrint` if they exist
+ * Set the html element `quote-box` equal to the value of variable `stringToPrint` and return the function
 ***/
 
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
-  let html = `
+  stringToPrint = `
   <p class="quote">${randomQuote.quote}</p>
   <p class="source">${randomQuote.source}`;
 
   if (randomQuote.citation) {
-    html += `<span class="citation">${randomQuote.citation}</span>`;
+    stringToPrint += `<span class="citation">${randomQuote.citation}</span>`;
+  }
+  if (randomQuote.year) { 
+    stringToPrint += `<span class="year">${randomQuote.year}</span>`;
+  } 
+  if (randomQuote.tags) {
+    stringToPrint += `<span class="tags">${randomQuote.tags}</span>`
   }
 
-  if (randomQuote.year) {
-    html += `<span class="year">${randomQuote.year}</span>`;
-  }
+  stringToPrint += `</p>`;
 
-  html += `</p>`;
-
-  return document.getElementById('quote-box').innerHTML = html;
+  return document.getElementById('quote-box').innerHTML = stringToPrint;
 }
 
 
