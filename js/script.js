@@ -100,3 +100,18 @@ function printQuote() {
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+
+/***
+ * Sets the HTML body background color to random RGB value
+ */
+
+function randomBackgroundColor() { 
+  let randomRed = Math.floor((Math.random() * 256));
+  let randomGreen = Math.floor((Math.random() * 256));
+  let randomBlue = Math.floor((Math.random() * 256));
+  document.body.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+}
+
+// document.body.style.backgroundColor = 'rgb(255,91,70)';
+
