@@ -36,6 +36,8 @@ const quotes = [
   {
     quote: "It is better to offer no excuse than a bad one.",
     source: "George Washington",
+    citation: 'Letter to His Niece',
+    year: 1791,
     tags: 'presidents'
   },
   {
@@ -61,16 +63,18 @@ function getRandomQuote(array) {
 
 
 /***
- * `printQuote` function - sets the HTML equal to the string generated using the random quote
+ * Sets the HTML element `quote-box` equal to the string generated using the random quote
  * 
  * Pass `getRandomQuote` function and store the random quote element in a variable
  * Build a string containing each parameter found in the quote object, and concatenate into a single string.
- *    Use if statements to test whether the selected quote object contains certain parameters; add them to sring `stringToPrint` if they exist
- * Set the html element `quote-box` equal to the value of variable `stringToPrint` and return the function
+ *    Use if statements to test whether the selected quote object contains certain other parameters; add them to `stringToPrint` if they exist
 ***/
 
 function printQuote() {
+  randomBackgroundColor(); // call function to generate random background color on `printQuote` call
+
   let randomQuote = getRandomQuote(quotes);
+
   stringToPrint = `
   <p class="quote">${randomQuote.quote}</p>
   <p class="source">${randomQuote.source}`;
@@ -95,6 +99,19 @@ function printQuote() {
 
 
 /***
+ * Sets the HTML body background color to random RGB value
+ */
+
+function randomBackgroundColor() {
+  let randomRed = Math.floor((Math.random() * 256));
+  let randomGreen = Math.floor((Math.random() * 256));
+  let randomBlue = Math.floor((Math.random() * 256));
+  const opacity = 0.7;
+  document.body.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue}, ${opacity})`;
+}
+
+
+/***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
@@ -102,16 +119,11 @@ function printQuote() {
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
 
-/***
- * Sets the HTML body background color to random RGB value
+
+
+
+/**
+ * Set interval 
  */
 
-function randomBackgroundColor() { 
-  let randomRed = Math.floor((Math.random() * 256));
-  let randomGreen = Math.floor((Math.random() * 256));
-  let randomBlue = Math.floor((Math.random() * 256));
-  document.body.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
-}
-
-// document.body.style.backgroundColor = 'rgb(255,91,70)';
-
+setInterval(printQuote, 5000);
