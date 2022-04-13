@@ -27,8 +27,8 @@ const quotes = [
     tags: 'books'
   },
   {
-    quote: "There's some good in this world, Mr.Frodo… and it's worth fighting for.",
-    source: 'J.R.R. Tolkien (Samwise Gamgee)',
+    quote: "There's some good in this world, Mr. Frodo… and it's worth fighting for.",
+    source: 'Samwise Gamgee',
     citation: 'Lord of the Rings',
     year: 1954,
     tags: 'movies'
@@ -63,7 +63,7 @@ function getRandomQuote(array) {
 
 
 /***
- * Sets the HTML element `quote-box` equal to the string generated using the random quote
+ * Sets the HTML div element id `quote-box` equal to the string generated using the random quote
  * 
  * Pass `getRandomQuote` function and store the random quote element in a variable
  * Build a string containing each parameter found in the quote object, and concatenate into a single string.
@@ -71,7 +71,7 @@ function getRandomQuote(array) {
 ***/
 
 function printQuote() {
-  randomBackgroundColor(); // call function to generate random background color on `printQuote` call
+  randomBackgroundColor(); // call to generate random background color on `printQuote` call
 
   let randomQuote = getRandomQuote(quotes);
 
@@ -119,11 +119,8 @@ function randomBackgroundColor() {
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
 
-
-
-
 /**
- * Set interval 
+ * Calls `printQuote` function every 7000 milliseconds (7 seconds)
  */
 
-setInterval(printQuote, 5000);
+setInterval(printQuote, 10000);
