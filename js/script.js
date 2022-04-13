@@ -16,34 +16,32 @@ const quotes = [
     quote: "A day wasted on others is not wasted on one's self.",
     source: 'Charles Dickens',
     citation: 'A Tale of Two Cities',
-    year: 1859
+    year: 1859,
+    tags: 'books'
   },
   {
     quote: "No one is useless in this world who lightens the burdens of another.",
     source: 'Charles Dickens',
     citation: 'Our Mutual Friend',
-    year: 1865
+    year: 1865,
+    tags: 'books'
   },
   {
     quote: "There's some good in this world, Mr.Frodo… and it's worth fighting for.",
     source: 'J.R.R. Tolkien (Samwise Gamgee)',
     citation: 'Lord of the Rings',
     year: 1954,
-    tags: 'Movies'
+    tags: 'movies'
   },
   {
     quote: "It is better to offer no excuse than a bad one.",
     source: "George Washington",
-    tags: 'U.S. Presidents'
+    tags: 'presidents'
   },
   {
     quote: "To ease another's heartache is to forget one's own.",
     source: "Abraham Lincoln",
-    tags: 'U.S. Presidents'
-  },
-  {
-    quote: "Whether you think you can or you think you can't, you're right.",
-    source: "Henry Ford",
+    tags: 'presidents'
   }
 ]
 
@@ -84,7 +82,10 @@ function printQuote() {
     stringToPrint += `<span class="year">${randomQuote.year}</span>`;
   } 
   if (randomQuote.tags) {
-    stringToPrint += `<span class="tags">${randomQuote.tags}</span>`
+    stringToPrint += `
+    <br>
+    <br>
+    <span class="tags">${randomQuote.tags}</span>`
   }
 
   stringToPrint += `</p>`;
