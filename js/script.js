@@ -1,16 +1,4 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-
-/*** 
- * Create an array of objects each containing a quote, a source, and some containing a citation and/or year. 
-***/
+/** Array of quotes */
 const quotes = [
   {
     quote: "A day wasted on others is not wasted on one's self.",
@@ -48,13 +36,11 @@ const quotes = [
 ]
 
 
-/***
- * `getRandomQuote` function returns a random element in an array provided as a parameter. 
- *    
- * Generates a random number from 0 to the array's length and stores it in the variable `randomIndexNumber`.
- * Uses the `randomIndexNumber` variable to select a random array element; stores the element in variable `randomArrayElement`.
-***/
-
+/**
+ * Selects and returns a random quote
+ * @param {array} array array of quotes 
+ * @returns randomly selected array
+ */
 function getRandomQuote(array) {
   let randomIndexNumber = Math.floor((Math.random() * array.length));
   let randomArrayElement = array[randomIndexNumber];
@@ -62,16 +48,12 @@ function getRandomQuote(array) {
 }
 
 
-/***
- * Sets the HTML div element id `quote-box` equal to the string generated using the random quote
- * 
- * Pass `getRandomQuote` function and store the random quote element in a variable
- * Build a string containing each parameter found in the quote object, and concatenate into a single string.
- *    Use if statements to test whether the selected quote object contains certain other parameters; add them to `stringToPrint` if they exist
-***/
-
+/**
+ * Displays random quote on the page
+ * @returns {object} HTML object element
+ */
 function printQuote() {
-  randomBackgroundColor(); // call to generate random background color on `printQuote` call
+  randomBackgroundColor();
 
   let randomQuote = getRandomQuote(quotes);
 
@@ -98,10 +80,9 @@ function printQuote() {
 }
 
 
-/***
- * Sets the HTML body background color to random RGB value
+/**
+ * Generates a random RGB color
  */
-
 function randomBackgroundColor() {
   let randomRed = Math.floor((Math.random() * 256));
   let randomGreen = Math.floor((Math.random() * 256));
@@ -111,16 +92,8 @@ function randomBackgroundColor() {
 }
 
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
-
+/** Click event listener for New Quote button */
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
-
-/**
- * Calls `printQuote` function every 7000 milliseconds (7 seconds)
- */
 
 setInterval(printQuote, 10000);
