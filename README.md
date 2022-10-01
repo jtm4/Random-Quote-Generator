@@ -1,6 +1,6 @@
 # Random Quote Generator
 
-Generate random quotes periodically or on click.
+Generate a random quote periodically or after each click.
 
 ## Features
 The Random Quote Generator application generates a new random quote each time that a user clicks the `Show another quote` button. 
